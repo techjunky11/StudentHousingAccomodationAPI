@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentHousingAccomodation.Domain.Enums
+{
+    public enum Interests
+    {
+        //e.g. Sports, Music, Art, etc
+        Sports,
+
+        Music,
+        Art,
+        Travel,
+        Food,
+        Technology,
+        Reading,
+        Writing,
+        Gaming,
+        Cooking,
+        Gardening,
+        Photography,
+        Fashion,
+        Fitness,
+        Volunteering,
+        Hiking,
+        Dancing,
+        Painting,
+        Drawing,
+        Crafting,
+        DIY,
+        Knitting,
+        Sewing,
+        Woodworking,
+        Pottery,
+        Sculpting,
+        Calligraphy,
+        PlayingMusicalInstruments,
+        Singing,
+        Acting,
+        Filmmaking,
+        Podcasting,
+        Blogging,
+        Vlogging,
+        SocialMedia,
+        Entrepreneurship,
+        Business,
+        Investing,
+        PersonalDevelopment,
+        Mindfulness,
+        Meditation,
+        Yoga,
+        Spirituality,
+        Philosophy,
+        Psychology,
+        History,
+        Science,
+        Nature,
+        Animals,
+        Environment,
+        Sustainability,
+        ClimateChange,
+        Politics,
+        CurrentEvents,
+        CommunityService,
+        Activism,
+
+        SocialJustice,
+        HumanRights,
+        Equality,
+        Diversity,
+        Inclusion,
+        MentalHealth,
+        Wellness,
+
+        SelfCare,
+        SelfImprovement,
+        SelfLove,
+        SelfAcceptance,
+        SelfDiscovery,
+        SelfAwareness,
+        SelfConfidence,
+        SelfEsteem,
+        SelfExpression,
+        SelfEmpowerment,
+        SelfMotivation,
+        SelfDiscipline,
+
+        SelfControl,
+        SelfRegulation,
+        SelfManagement,
+        SelfOrganization
+    }
+}

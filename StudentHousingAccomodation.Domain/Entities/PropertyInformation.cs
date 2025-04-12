@@ -9,20 +9,18 @@
         public string IsAvailable { get; set; } //occupied,pending,coming soon or available
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public int PropertyRoomsAvailable { get; set; }
-        public int TotalPropertyRooms { get; set; }
+        public int TotalRoomAvailable { get; set; }
+        public double Distance { get; set; } //distance from the university
         public string TitleDeedsOrBillUrl { get; set; }
         public bool PropertyIsApprovedByAdmin { get; set; }
         public string PropertyAddress { get; set; }
         public decimal? PropertyLatitudeCoordinates { get; set; }
         public decimal? PropertLongitudeCoordinates { get; set; }
         public string PropertyType { get; set; }
-
         public List<PropertyAmentiesInformation>? Amenties { get; set; }
         public List<PropertyImage>? PropertyImages { get; set; }
-        public List<PropertyReview>? PropertyReviews { get; set; }
         public List<PropertyRating>? PropertyRatings { get; set; }
-        public List<PropertyComments>? PropertyComments { get; set; }
+        public List<RoomInformation>? PropertyRooms { get; set; }
         public LandLordInformation? LandLordInformation { get; set; }
         public Guid LandLordInformationId { get; set; }
     }
