@@ -6,4 +6,59 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\LandLordInformationHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\LandLordInformationHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\LandLordInformationHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\LandLordInformationHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\PropertyAmentitiesInformationHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\PropertyAmentitiesInformationHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\PropertyAmentitiesInformationHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\PropertyAmentitiesInformationHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\PropertyImageHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\PropertyImageHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\PropertyImageHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\PropertyImageHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\PropertyInformationHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\PropertyInformationHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\PropertyInformationHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\PropertyInformationHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\PropertyRatingHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\PropertyRatingHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\PropertyRatingHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\PropertyRatingHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\RoomAmentitiesInformationsHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\RoomAmentitiesInformationsHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\RoomAmentitiesInformationsHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\RoomAmentitiesInformationsHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\RoomImageHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\RoomImageHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\RoomImageHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\RoomImageHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\RoomInformationHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\RoomInformationHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\RoomInformationHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\RoomInformationHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\RoomRatingHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\RoomRatingHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\RoomRatingHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\RoomRatingHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\StudentInformationHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\StudentInformationHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\StudentInformationHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\StudentInformationHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\StudentInterestsHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\StudentInterestsHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\StudentInterestsHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\StudentInterestsHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\UserHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\UserHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\UserHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\UserHandlersRequest\Requests\Queries\" />
+    <Folder Include="Features\UserRolesHandlersRequest\Handlers\Commands\" />
+    <Folder Include="Features\UserRolesHandlersRequest\Handlers\Queries\" />
+    <Folder Include="Features\UserRolesHandlersRequest\Requests\Commands\" />
+    <Folder Include="Features\UserRolesHandlersRequest\Requests\Queries\" />
+  </ItemGroup>
+
 </Project>

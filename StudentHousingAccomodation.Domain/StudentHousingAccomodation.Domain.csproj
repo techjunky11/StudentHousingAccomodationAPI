@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\LandLordInformationDtos\" />
+    <Folder Include="Dtos\UserRolesDtos\" />
+    <Folder Include="Dtos\UserDtos\" />
+    <Folder Include="Dtos\StudentInterestsDtos\" />
+    <Folder Include="Dtos\StudentInformationDtos\" />
+    <Folder Include="Dtos\RoomRatingDtos\" />
+    <Folder Include="Dtos\RoomImageDtos\" />
+    <Folder Include="Dtos\RoomAmentitiesInformationsDtos\" />
+    <Folder Include="Dtos\PropertyRatingDtos\" />
+    <Folder Include="Dtos\PropertyInformationDtos\" />
+    <Folder Include="Dtos\PropertyImageDtos\" />
+    <Folder Include="Dtos\PropertyAmentitiesInformationDtos\" />
+  </ItemGroup>
+
 </Project>

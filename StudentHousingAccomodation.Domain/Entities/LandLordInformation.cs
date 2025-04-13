@@ -9,11 +9,10 @@ namespace StudentHousingAccomodation.Domain.Entities
     public class LandLordInformation
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string LandLordName { get; set; }
-        public string LandLordEmail { get; set; }
-        public string LandLordPhoneNumber { get; set; }
-        public string LandLordIdUrl { get; set; } //e.g. "https://example.com/id.jpg"
-        public string LandLordProfileImageUrl { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public User? User { get; set; }
+        public Guid UserId { get; set; } // Foreign key property
         public List<PropertyInformation>? Properties { get; set; }
     }
 }
