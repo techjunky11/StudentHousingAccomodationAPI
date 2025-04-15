@@ -9,8 +9,6 @@
         public string IsAvailable { get; set; } //occupied,pending,coming soon or available
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public int TotalRoomAvailable { get; set; }
-        public double Distance { get; set; } //distance from the university
         public string TitleDeedsOrBillUrl { get; set; }
         public bool PropertyIsApprovedByAdmin { get; set; }
         public string PropertyAddress { get; set; }

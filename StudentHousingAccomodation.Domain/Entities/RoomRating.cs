@@ -11,6 +11,5 @@
         public RoomInformation? RoomInformation { get; set; } //Navigation property
         public Guid StudentInformationId { get; set; } //Foreign key property
         public StudentInformation? StudentInformation { get; set; } //Navigation property
-      
     }
 }
