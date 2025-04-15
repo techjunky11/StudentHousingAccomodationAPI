@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHousingAccomodation.Domain", "StudentHousingAccomodation.Domain\StudentHousingAccomodation.Domain.csproj", "{E83BDAB6-ABD5-4C64-BBD0-B0C58F03B4F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHousingAccomodation.Application", "StudentHousingAccomodation.Application\StudentHousingAccomodation.Application.csproj", "{29B8A657-7053-477A-8BEE-B0AB6FEE8BAB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E83BDAB6-ABD5-4C64-BBD0-B0C58F03B4F9} = {E83BDAB6-ABD5-4C64-BBD0-B0C58F03B4F9}
+		{F581F5F9-319F-41AB-BF14-F5A6DC3C6862} = {F581F5F9-319F-41AB-BF14-F5A6DC3C6862}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHousingAccomodation.Data", "StudentHousingAccomodation.Data\StudentHousingAccomodation.Data.csproj", "{F581F5F9-319F-41AB-BF14-F5A6DC3C6862}"
 EndProject
