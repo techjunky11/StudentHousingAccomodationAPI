@@ -13,8 +13,6 @@ namespace StudentHousingAccomodation.Domain.Dtos.PropertyRatingDtos
         public string? Comment { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public Guid PropertyInformationId { get; set; }
-        public Guid StudentInformationId { get; set; }
         public StudentInformation? StudentInformation { get; set; }
     }
 }

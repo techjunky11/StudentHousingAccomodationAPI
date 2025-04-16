@@ -1,14 +1,8 @@
 ﻿using StudentHousingAccomodation.Domain.Dtos.PropertyInformationDtos;
 using StudentHousingAccomodation.Domain.Dtos.PropertyRatingDtos;
 using StudentHousingAccomodation.Domain.Dtos.RoomInformationDto;
-using StudentHousingAccomodation.Domain.Dtos.RoomRatingDtos;
 using StudentHousingAccomodation.Domain.Dtos.StudentInterestsDtos;
 using StudentHousingAccomodation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Domain.Dtos.StudentInformationDtos
 {
@@ -27,6 +21,5 @@ namespace StudentHousingAccomodation.Domain.Dtos.StudentInformationDtos
         public List<GetThePropertyInformationDto>? PropertyInformationDto { get; set; } // List of properties the student is interested in
         public List<GetTheRoomInformationDto>? RoomInformationDto { get; set; } // List of rooms the student is interested in
         public List<GetThePropertyRatingDto>? PropertyRatingsDto { get; set; }
-        public List<GetTheRoomRatingDto>? RoomRatings { get; set; }
     }
 }

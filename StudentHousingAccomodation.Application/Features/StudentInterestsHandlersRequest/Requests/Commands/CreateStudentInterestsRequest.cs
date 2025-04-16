@@ -11,7 +11,7 @@ namespace StudentHousingAccomodation.Application.Features.StudentInterestsHandle
 {
     public class CreateStudentInterestsRequest : IRequest<GeneralResponse>
     {
-        public List<CreateNewStudentInterestsDto> CreateNewStudentInterestsDto { get; set; } = new CreateNewStudentInterestsDto();
+        public List<CreateNewStudentInterestsDto> CreateNewStudentInterestsDto { get; set; }
         public Guid StudentInformationId { get; set; } //Foreign key property
     }
 }

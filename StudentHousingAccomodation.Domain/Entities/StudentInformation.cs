@@ -23,6 +23,6 @@ namespace StudentHousingAccomodation.Domain.Entities
         public List<PropertyInformation>? PropertyInformation { get; set; } // List of properties the student is interested in
         public List<RoomInformation>? RoomInformation { get; set; } // List of rooms the student is interested in
         public List<PropertyRating>? PropertyRatings { get; set; }
-        public List<RoomRating>? RoomRatings { get; set; }
+        
     }
 }

@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
-    public class LandLordInformationRepository : GenericRepository<LandLordInformation>, ILandLordInformationRepository
+    public class PropertyRatingRepository : GenericRepository<PropertyRating>, IPropertyRatingRepository
     {
-        public LandLordInformationRepository(AppDbContext _db) : base(_db)
+        public PropertyRatingRepository(AppDbContext _db) : base(_db)
         {
         }
 
-        
+        public Task<List<PropertyRating>> GetPropertyRatingByPropertyId(Guid Propertyid)
+        {
+            throw new NotImplementedException();
+        }
 
-        public Task<LandLordInformation> GetLandLordInformationByUserId(Guid userId)
+        public Task<List<PropertyRating>> GetPropertyRatingByStudentId(Guid Studentid)
         {
             throw new NotImplementedException();
         }

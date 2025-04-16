@@ -40,46 +40,6 @@ namespace StudentHousingAccomodation.Domain.Enums
         PetFriendly,
         Furnished,
         Unfurnished,
-        UtilitiesIncluded,
-        CableTV,
-        InternetIncluded,
-        TrashCollection,
-        SnowRemoval,
-        Landscaping,
-        PestControl,
-        MaintenanceServices,
-
-        OnSiteManagement,
-        24HourEmergencyMaintenance,
-        PackageReceiving,
-        CommunityEvents,
-        FitnessClasses,
-        StudyRooms,
-        GameRoom,
-
-
-        BusinessCenter,
-        ConferenceRoom,
-        RooftopDeck,
-        BBQArea,
-        Playground,
-        BikeStorage,
-        ParkingGarage,
-        Carport,
-        OutdoorGrill,
-        TennisCourt,
-        BasketballCourt,
-        VolleyballCourt,
-        SoccerField,
-        BaseballField,
-        DogPark,
-
-        WalkingTrails,
-        HikingTrails,
-        NaturePreserve,
-
-        BeachAccess,
-        WaterfrontAccess,
-        SkiInSkiOut,
+        UtilitiesIncluded
     }
 }

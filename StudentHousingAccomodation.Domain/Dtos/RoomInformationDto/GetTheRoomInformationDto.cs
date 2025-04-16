@@ -1,12 +1,5 @@
 ﻿using StudentHousingAccomodation.Domain.Dtos.LandLordInformationDtos;
-using StudentHousingAccomodation.Domain.Dtos.RoomAmentitiesInformationsDtos;
-using StudentHousingAccomodation.Domain.Dtos.RoomImageDtos;
-using StudentHousingAccomodation.Domain.Dtos.RoomRatingDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StudentHousingAccomodation.Domain.Dtos.PropertyImageDtos;
 
 namespace StudentHousingAccomodation.Domain.Dtos.RoomInformationDto
 {
@@ -19,9 +12,7 @@ namespace StudentHousingAccomodation.Domain.Dtos.RoomInformationDto
         public DateTime DateModified { get; set; }
         public int RoomNumber { get; set; }
         public string RoomType { get; set; }
-        public List<GetTheRoomImageDto>? RoomImages { get; set; }
-        public List<GetTheRoomRatingDto>? RoomRatings { get; set; }
-        public List<GetTheRoomAmentitiesInformationDto>? RoomAmenties { get; set; }
+        public List<GetThePropertyImageDto>? RoomImages { get; set; }
         public GetTheLandLordInformationDto? LandLordInformationDto { get; set; }
     }
 }

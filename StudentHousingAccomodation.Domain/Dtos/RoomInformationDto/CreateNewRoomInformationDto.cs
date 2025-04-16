@@ -14,6 +14,6 @@ namespace StudentHousingAccomodation.Domain.Dtos.RoomInformationDto
         public string IsAvailable { get; set; } //occupied,pending,coming soon or available
         public int RoomNumber { get; set; }
         public string RoomType { get; set; }
-        public Guid StudentInformationId { get; set; }
+        public Guid PropertyInformationId { get; set; }
     }
 }

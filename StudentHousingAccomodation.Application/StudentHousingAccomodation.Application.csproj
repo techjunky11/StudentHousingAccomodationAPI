@@ -22,9 +22,6 @@
     <Compile Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
     <Compile Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
     <Compile Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <Compile Remove="Features\RoomAmentitiesInformationsHandlersRequest\Admin\**" />
-    <Compile Remove="Features\RoomAmentitiesInformationsHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\RoomAmentitiesInformationsHandlersRequest\Student\**" />
     <Compile Remove="Features\RoomImageHandlersRequest\Admin\**" />
     <Compile Remove="Features\RoomImageHandlersRequest\Landlord\**" />
     <Compile Remove="Features\RoomImageHandlersRequest\Student\**" />
@@ -59,9 +56,6 @@
     <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
     <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
     <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\RoomAmentitiesInformationsHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\RoomAmentitiesInformationsHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\RoomAmentitiesInformationsHandlersRequest\Student\**" />
     <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Admin\**" />
     <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Landlord\**" />
     <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Student\**" />
@@ -96,9 +90,6 @@
     <None Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
     <None Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
     <None Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <None Remove="Features\RoomAmentitiesInformationsHandlersRequest\Admin\**" />
-    <None Remove="Features\RoomAmentitiesInformationsHandlersRequest\Landlord\**" />
-    <None Remove="Features\RoomAmentitiesInformationsHandlersRequest\Student\**" />
     <None Remove="Features\RoomImageHandlersRequest\Admin\**" />
     <None Remove="Features\RoomImageHandlersRequest\Landlord\**" />
     <None Remove="Features\RoomImageHandlersRequest\Student\**" />
@@ -128,6 +119,9 @@
   <ItemGroup>
     <ProjectReference Include="..\StudentHousingAccomodation.Data\StudentHousingAccomodation.Data.csproj" />
     <ProjectReference Include="..\StudentHousingAccomodation.Domain\StudentHousingAccomodation.Domain.csproj" />
+    <ProjectReference Include="..\StudentHousingAccomodation.Infrastructure\StudentHousingAccomodation.Infrastructure.csproj" />
   </ItemGroup>
+
+  
 
 </Project>

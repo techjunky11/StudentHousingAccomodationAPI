@@ -9,10 +9,7 @@ namespace StudentHousingAccomodation.Data.Data
         {
         }
 
-        public DbSet<RoomAmentiesInformation> RoomAmentiesInformation { get; set; } = null!;
         public DbSet<RoomInformation> RoomInformation { get; set; } = null!;
-        public DbSet<RoomImage> RoomImages { get; set; } = null!;
-        public DbSet<RoomRating> RoomRatings { get; set; } = null!;
         public DbSet<StudentInformation> StudentInformation { get; set; } = null!;
         public DbSet<PropertyInformation> PropertyInformation { get; set; } = null!;
         public DbSet<PropertyRating> PropertyRatings { get; set; } = null!;

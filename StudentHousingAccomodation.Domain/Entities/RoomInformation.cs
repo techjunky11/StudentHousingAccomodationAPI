@@ -10,10 +10,7 @@
         public DateTime DateModified { get; set; }
         public int RoomNumber { get; set; }
         public string RoomType { get; set; }
-        public List<RoomImage>? RoomImages { get; set; }
-        public List<RoomRating>? RoomRatings { get; set; }
-        public List<RoomAmentiesInformation>? RoomAmenties { get; set; }
-        public StudentInformation? StudentInformation { get; set; }
-        public Guid StudentInformationId { get; set; }
+        public List<PropertyImage>? RoomImages { get; set; }
+        public Guid ProperyInformationId { get; set; }
     }
 }
