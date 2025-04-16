@@ -19,14 +19,14 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             db = _db;
         }
 
-        public async Task<GeneralResponse> Add(T entity)
+        public virtual async Task<GeneralResponse> Add(T entity)
         {
             db.Set<T>().Add(entity);
             await db.SaveChangesAsync();
             return new GeneralResponse(true, "Added");
         }
 
-        public async Task<GeneralResponse> Delete(Guid id)
+        public virtual async Task<GeneralResponse> Delete(Guid id)
         {
             var model = db.Set<T>().Find(id)!;
             if (model == null) return new GeneralResponse(false, "not found");
@@ -35,17 +35,17 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             return new GeneralResponse(true, "Successfully deleted ");
         }
 
-        public T Get(Guid id)
+        public virtual T Get(Guid id)
         {
             return db.Set<T>().Find(id)!;
         }
 
-        public async Task<IReadOnlyList<T>> GetAll()
+        public virtual async Task<IReadOnlyList<T>> GetAll()
         {
             return await db.Set<T>().ToListAsync();
         }
 
-        public async Task<GeneralResponse> Update( T entity)
+        public virtual async Task<GeneralResponse> Update(T entity)
         {
             db.Set<T>().Update(entity);
             await db.SaveChangesAsync();// Save changes to the repository

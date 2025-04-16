@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Domain.Records
 {
-    public record LoginResponse(bool Flag, string Message, string? Token = null!, string? RefreshToken = null!)
+    public record CustomUserClaims(string Id = null!, string name = null!, string Email = null!, string Role = null!)
     {
     }
 }

@@ -12,7 +12,7 @@
         public DateTime DateModified { get; set; } //e.g. "2023-10-01"
         public bool IsVerified { get; set; } // true or false
         public UserRoles? UserRole { get; set; } // Role of the user (e.g. "Admin", "Student", "Landlord")
-        public Guid UserRoleId { get; set; } // Foreign key property
+        public Guid UserRolesId { get; set; } // Foreign key property
         public int LoginAttempts { get; set; } // Number of login attempts
         public bool IsLocked { get; set; } // true or false
         public DateTime? LastLoginDate { get; set; } //e.g. "2023-10-01"

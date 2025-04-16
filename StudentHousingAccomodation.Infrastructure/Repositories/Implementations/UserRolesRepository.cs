@@ -14,5 +14,10 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
         public UserRolesRepository(AppDbContext _db) : base(_db)
         {
         }
+
+        public Task<UserRoles> GetUserRoleByUserIdAsync(Guid Userid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

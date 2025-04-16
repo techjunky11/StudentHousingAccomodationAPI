@@ -19,5 +19,6 @@ namespace StudentHousingAccomodation.Data.Data
         public DbSet<StudentInterests> StudentInterests { get; set; } = null!;
         public DbSet<UserRoles> UserRoles { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<RefreshTokens>? RefreshTokens { get; set; }
     }
 }

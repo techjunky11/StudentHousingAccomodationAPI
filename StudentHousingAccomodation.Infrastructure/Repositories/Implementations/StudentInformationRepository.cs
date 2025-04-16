@@ -15,8 +15,6 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
         {
         }
 
-      
-
         public Task<StudentInformation> GetStudentInformationByUserId(Guid userId)
         {
             throw new NotImplementedException();
