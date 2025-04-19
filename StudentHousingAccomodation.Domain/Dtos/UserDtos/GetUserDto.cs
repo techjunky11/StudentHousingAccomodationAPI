@@ -14,7 +14,7 @@ namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
         public DateTime DateCreated { get; set; } //e.g. "2023-10-01"
         public DateTime DateModified { get; set; } //e.g. "2023-10-01"
         public bool IsVerified { get; set; } // true or false
-        public UserRoles? UserRole { get; set; } // Role of the user (e.g. "Admin", "Student", "Landlord"
+        public string? RoleName { get; set; } // Role of the user (e.g. "Admin", "Student", "Landlord")
         public DateTime? LastLoginDate { get; set; } //e.g. "2023-10-01"
         public DateTime? LastPasswordChangeDate { get; set; } //e.g. "2023-10-01"
     }

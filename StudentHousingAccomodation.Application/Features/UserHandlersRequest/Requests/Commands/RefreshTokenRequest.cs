@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using StudentHousingAccomodation.Domain.Dtos.UserDtos;
+using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands
 {
-    public class CreateUserRequest : IRequest<GeneralResponse>
+    public class RefreshTokenRequest : IRequest<LoginResponse>
     {
-        public CreateNewUserDto? CreateNewUserDto { get; set; }
+        public string Token { get; set; } = string.Empty;
+        public string RefreshToken { get; set; } = string.Empty;
     }
 }

@@ -5,11 +5,11 @@ using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
 using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
-using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
@@ -18,15 +18,48 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
         private readonly IUserAccountRepository userAccountRepository;
         private readonly IUserRolesRepository userRolesRepository;
         private readonly IOptions<JwtSection> config;
+        private readonly IRoleRepository roleRepository;
+        private readonly ILandLordInformationRepository landLordInformationRepository;
+        private readonly IStudentInformationRepository studentInformationRepository;
 
         private readonly AppDbContext db;
 
-        public UserAccountRepository(IOptions<JwtSection> config, AppDbContext _db, IUserRolesRepository userRolesRepository, IUserAccountRepository userAccountRepository) : base(_db)
+        public UserAccountRepository(IOptions<JwtSection> config, AppDbContext _db, IUserRolesRepository userRolesRepository, IUserAccountRepository userAccountRepository, IRoleRepository roleRepository, ILandLordInformationRepository landLordInformationRepository, IStudentInformationRepository studentInformationRepository) : base(_db)
         {
             this.userRolesRepository = userRolesRepository;
             db = _db;
             this.userAccountRepository = userAccountRepository;
             this.config = config;
+            this.roleRepository = roleRepository;
+            this.landLordInformationRepository = landLordInformationRepository;
+            this.studentInformationRepository = studentInformationRepository;
+        }
+
+        public override async Task<GeneralResponse> Delete(Guid id)
+        {
+            //If the id is empty
+            if (id == Guid.Empty) return new GeneralResponse(false, "Id is empty");
+            //Find the user by id
+            var user = await db.Users.FirstOrDefaultAsync(_ => _.Id == id);
+            if (user == null) return new GeneralResponse(false, "User not found");
+            var checkLandLord = await landLordInformationRepository.GetLandLordInformationByUserId(user.Id);
+
+            //Delete the landlord information
+            if (checkLandLord.UserId == user.Id)
+            {
+                //Delete the landlord information
+                db.LandLordInformation.Remove(checkLandLord);
+            }
+            var checkStudent = await studentInformationRepository.GetStudentInformationByUserId(user.Id);
+            if (checkStudent.UserId == user.Id)
+            {
+                //Delete the student information
+                db.StudentInformation.Remove(checkStudent);
+            }
+
+            db.Users.Remove(user);
+            await db.SaveChangesAsync();
+            return new GeneralResponse(true, "User deleted successfully");
         }
 
         public override async Task<GeneralResponse> Add(User user)
@@ -44,13 +77,6 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             {
                 return new GeneralResponse(false, "User registered already");
             }
-
-            var checkRole = userRolesRepository.Get(user.UserRolesId);
-            if (checkRole == null)
-            {
-                return new GeneralResponse(false, "User Role not found");
-            }
-            //if user is not found we add to database
             var appUser = await AddToDatabase(new User()
             {
                 //add Register models to map to the ApplicationUser model
@@ -66,21 +92,43 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
                 LastLoginDate = null,
                 LastPasswordChangeDate = null,
                 //map the user roles to the user roles class
-                UserRolesId = user.UserRolesId,
+                RoleId = user.RoleId,
                 Password = BCrypt.Net.BCrypt.HashPassword(user.Password) //encrypt password to database
             });
+
+            if (appUser != null)
+            {
+                //add the user to the user roles table
+                await userRolesRepository.Add(new UserRoles()
+                {
+                    userId = appUser.Id,
+                    RoleId = user.RoleId
+                });
+            }
+            else
+            {
+                return new GeneralResponse(false, "Account not created");
+            }
 
             return new GeneralResponse(true, "Account Created!");
         }
 
         public Task<User> GetUserByEmail(string email)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(email)) return Task.FromResult<User>(null!);
+            //find the user by email
+            var user = db.Users.FirstOrDefaultAsync(_ => _.Email == email);
+            if (user == null) return Task.FromResult<User>(null!);
+            return user;
         }
 
         public Task<List<User>> GetUsersByRoleId(Guid roleId)
         {
-            throw new NotImplementedException();
+            if (roleId == Guid.Empty) return Task.FromResult<List<User>>(null!);
+            //find the user by roleId
+            var users = db.Users.Where(_ => _.RoleId == roleId).ToListAsync();
+            if (users == null) return Task.FromResult<List<User>>(null!);
+            return users;
         }
 
         public async Task<LoginResponse> LoginToAccount(Login user)
@@ -98,10 +146,13 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             var getUserRole = await userRolesRepository.GetUserRoleByUserIdAsync(appUser.Id);
             if (getUserRole == null) return new LoginResponse(false, "User role not found");
 
-            string jwtToken = GenerateToken(appUser, getUserRole.RoleName!);
+            var getRoleName = roleRepository.Get(getUserRole.RoleId);
+            if (getRoleName == null) return new LoginResponse(false, "User role not found");
+
+            string jwtToken = GenerateToken(appUser, getRoleName.Name!);
             string refreshToken = GenerateRefreshToken();
             //save the refresh token to the database
-            var finduser = await db.RefreshTokens.FirstOrDefaultAsync(_ => _.UserId == appUser.Id);
+            var finduser = await db.RefreshTokens!.FirstOrDefaultAsync(_ => _.UserId == appUser.Id);
 
             if (finduser != null)
             {
@@ -134,7 +185,10 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             var user = await db.Users.FirstOrDefaultAsync(_ => _.Id == findToken.UserId);
             if (user is null) return new LoginResponse(false, "refresh token could not be generated because user not found");
             var userRole = await userRolesRepository.GetUserRoleByUserIdAsync(user.Id);
-            string jwtToken = GenerateToken(user, userRole.RoleName!);
+            if (userRole is null) return new LoginResponse(false, "User role not found");
+            var getRoleName = roleRepository.Get(userRole.RoleId);
+            if (getRoleName is null) return new LoginResponse(false, "User role not found");
+            string jwtToken = GenerateToken(user, getRoleName.Name!);
             string newrefreshToken = GenerateRefreshToken();
             var updateRefreshToken = await db.RefreshTokens.FirstOrDefaultAsync(_ => _.UserId == user.Id);
             if (updateRefreshToken is null) return new LoginResponse(false, "RefreshToken could not be generated because User Has not Signed In");

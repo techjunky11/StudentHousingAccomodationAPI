@@ -1,4 +1,4 @@
-﻿namespace StudentHousingAccomodation.Domain.Entities
+﻿namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
 {
     public class UserSession
     {

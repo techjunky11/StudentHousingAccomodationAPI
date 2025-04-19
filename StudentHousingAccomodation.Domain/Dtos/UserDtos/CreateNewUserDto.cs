@@ -14,6 +14,6 @@ namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
         public string Email { get; set; }
         public string PhoneNumber { get; set; } //e.g. "+1234567890"
         public string? Address { get; set; } //e.g. "123 Main St, City, Country"
-        public Guid UserRoleId { get; set; } // Foreign key property
+        public string? RoleName { get; set; } //e.g. "Admin", "Student", "Landlord"
     }
 }

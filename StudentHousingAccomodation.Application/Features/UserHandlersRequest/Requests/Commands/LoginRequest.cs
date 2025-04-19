@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands
 {
-    public class CreateUserRequest : IRequest<GeneralResponse>
+    public class LoginRequest : IRequest<LoginResponse>
     {
-        public CreateNewUserDto? CreateNewUserDto { get; set; }
+        public Login? user { get; set; } //e.g. "JohnDoe"
+
     }
 }

@@ -9,10 +9,15 @@ using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
-    internal class PropertyInformationRepository : GenericRepository<PropertyInformation>, IPropertyInformationRepository
+    public class RoleRepository : GenericRepository<Role>, IRoleRepository
     {
-        public PropertyInformationRepository(AppDbContext _db) : base(_db)
+        public RoleRepository(AppDbContext _db) : base(_db)
         {
+        }
+
+        public Task<Role> GetRoleByName(string roleName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

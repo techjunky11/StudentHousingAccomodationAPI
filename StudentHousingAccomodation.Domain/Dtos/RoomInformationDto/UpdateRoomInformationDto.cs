@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Domain.Dtos.RoomInformationDto
 {
-    public class UpdateRoomInformationDto
+    public class UpdateTheRoomInformationDto
     {
         public string RoomDescription { get; set; }
         public decimal RoomMonthlyRent { get; set; }
