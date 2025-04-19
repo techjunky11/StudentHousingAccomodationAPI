@@ -1,127 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">  
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+ <PropertyGroup>  
+   <TargetFramework>net9.0</TargetFramework>  
+   <ImplicitUsings>enable</ImplicitUsings>  
+   <Nullable>enable</Nullable>  
+ </PropertyGroup>  
 
-  <ItemGroup>
-    <Compile Remove="Features\LandLordInformationHandlersRequest\Admin\**" />
-    <Compile Remove="Features\LandLordInformationHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\LandLordInformationHandlersRequest\Student\**" />
-    <Compile Remove="Features\PropertyAmentitiesInformationHandlersRequest\Admin\**" />
-    <Compile Remove="Features\PropertyAmentitiesInformationHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\PropertyAmentitiesInformationHandlersRequest\Student\**" />
-    <Compile Remove="Features\PropertyImageHandlersRequest\Admin\**" />
-    <Compile Remove="Features\PropertyImageHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\PropertyImageHandlersRequest\Student\**" />
-    <Compile Remove="Features\PropertyInformationHandlersRequest\Admin\**" />
-    <Compile Remove="Features\PropertyInformationHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\PropertyInformationHandlersRequest\Student\**" />
-    <Compile Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
-    <Compile Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <Compile Remove="Features\RoomImageHandlersRequest\Admin\**" />
-    <Compile Remove="Features\RoomImageHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\RoomImageHandlersRequest\Student\**" />
-    <Compile Remove="Features\RoomInformationHandlersRequest\Admin\**" />
-    <Compile Remove="Features\RoomInformationHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\RoomInformationHandlersRequest\Student\**" />
-    <Compile Remove="Features\RoomRatingHandlersRequest\Admin\**" />
-    <Compile Remove="Features\RoomRatingHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\RoomRatingHandlersRequest\Student\**" />
-    <Compile Remove="Features\StudentInformationHandlersRequest\Admin\**" />
-    <Compile Remove="Features\StudentInformationHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\StudentInformationHandlersRequest\Student\**" />
-    <Compile Remove="Features\StudentInterestsHandlersRequest\Admin\**" />
-    <Compile Remove="Features\StudentInterestsHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\StudentInterestsHandlersRequest\Student\**" />
-    <Compile Remove="Features\UserHandlersRequest\Admin\**" />
-    <Compile Remove="Features\UserHandlersRequest\Landlord\**" />
-    <Compile Remove="Features\UserHandlersRequest\Student\**" />
-    <Compile Remove="Features\UserRolesHandlersRequest\**" />
-    <EmbeddedResource Remove="Features\LandLordInformationHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\LandLordInformationHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\LandLordInformationHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\PropertyAmentitiesInformationHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\PropertyAmentitiesInformationHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\PropertyAmentitiesInformationHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\PropertyImageHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\PropertyImageHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\PropertyImageHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\PropertyInformationHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\PropertyInformationHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\PropertyInformationHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\RoomImageHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\RoomInformationHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\RoomInformationHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\RoomInformationHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\RoomRatingHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\RoomRatingHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\RoomRatingHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\StudentInformationHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\StudentInformationHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\StudentInformationHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\StudentInterestsHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\StudentInterestsHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\StudentInterestsHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\UserHandlersRequest\Admin\**" />
-    <EmbeddedResource Remove="Features\UserHandlersRequest\Landlord\**" />
-    <EmbeddedResource Remove="Features\UserHandlersRequest\Student\**" />
-    <EmbeddedResource Remove="Features\UserRolesHandlersRequest\**" />
-    <None Remove="Features\LandLordInformationHandlersRequest\Admin\**" />
-    <None Remove="Features\LandLordInformationHandlersRequest\Landlord\**" />
-    <None Remove="Features\LandLordInformationHandlersRequest\Student\**" />
-    <None Remove="Features\PropertyAmentitiesInformationHandlersRequest\Admin\**" />
-    <None Remove="Features\PropertyAmentitiesInformationHandlersRequest\Landlord\**" />
-    <None Remove="Features\PropertyAmentitiesInformationHandlersRequest\Student\**" />
-    <None Remove="Features\PropertyImageHandlersRequest\Admin\**" />
-    <None Remove="Features\PropertyImageHandlersRequest\Landlord\**" />
-    <None Remove="Features\PropertyImageHandlersRequest\Student\**" />
-    <None Remove="Features\PropertyInformationHandlersRequest\Admin\**" />
-    <None Remove="Features\PropertyInformationHandlersRequest\Landlord\**" />
-    <None Remove="Features\PropertyInformationHandlersRequest\Student\**" />
-    <None Remove="Features\PropertyRatingHandlersRequest\Admin\**" />
-    <None Remove="Features\PropertyRatingHandlersRequest\Landlord\**" />
-    <None Remove="Features\PropertyRatingHandlersRequest\Student\**" />
-    <None Remove="Features\RoomImageHandlersRequest\Admin\**" />
-    <None Remove="Features\RoomImageHandlersRequest\Landlord\**" />
-    <None Remove="Features\RoomImageHandlersRequest\Student\**" />
-    <None Remove="Features\RoomInformationHandlersRequest\Admin\**" />
-    <None Remove="Features\RoomInformationHandlersRequest\Landlord\**" />
-    <None Remove="Features\RoomInformationHandlersRequest\Student\**" />
-    <None Remove="Features\RoomRatingHandlersRequest\Admin\**" />
-    <None Remove="Features\RoomRatingHandlersRequest\Landlord\**" />
-    <None Remove="Features\RoomRatingHandlersRequest\Student\**" />
-    <None Remove="Features\StudentInformationHandlersRequest\Admin\**" />
-    <None Remove="Features\StudentInformationHandlersRequest\Landlord\**" />
-    <None Remove="Features\StudentInformationHandlersRequest\Student\**" />
-    <None Remove="Features\StudentInterestsHandlersRequest\Admin\**" />
-    <None Remove="Features\StudentInterestsHandlersRequest\Landlord\**" />
-    <None Remove="Features\StudentInterestsHandlersRequest\Student\**" />
-    <None Remove="Features\UserHandlersRequest\Admin\**" />
-    <None Remove="Features\UserHandlersRequest\Landlord\**" />
-    <None Remove="Features\UserHandlersRequest\Student\**" />
-    <None Remove="Features\UserRolesHandlersRequest\**" />
-  </ItemGroup>
+ <ItemGroup>  
+   <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />  
+   <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />  
+ </ItemGroup>  
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.5.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\StudentHousingAccomodation.Data\StudentHousingAccomodation.Data.csproj" />
-    <ProjectReference Include="..\StudentHousingAccomodation.Domain\StudentHousingAccomodation.Domain.csproj" />
-    <ProjectReference Include="..\StudentHousingAccomodation.Infrastructure\StudentHousingAccomodation.Infrastructure.csproj" />
-  </ItemGroup>
-
-  
+ <ItemGroup>  
+   <ProjectReference Include="..\StudentHousingAccomodation.Data\StudentHousingAccomodation.Data.csproj" />  
+   <ProjectReference Include="..\StudentHousingAccomodation.Domain\StudentHousingAccomodation.Domain.csproj" />  
+   <ProjectReference Include="..\StudentHousingAccomodation.Infrastructure\StudentHousingAccomodation.Infrastructure.csproj" />  
+ </ItemGroup>  
 
 </Project>

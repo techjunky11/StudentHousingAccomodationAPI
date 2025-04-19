@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Commands;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Queries;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Queries;
+using StudentHousingAccomodation.Domain.Dtos.UserDtos;
 
 namespace StudentHousingAccomodation.API.Controllers
 {
@@ -19,44 +22,44 @@ namespace StudentHousingAccomodation.API.Controllers
         }
 
         [HttpPost("CreateUser")]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserHandler command)
+        public async Task<IActionResult> CreateUser([FromBody] CreateNewUserDto command)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new CreateUserRequest { CreateNewUserDto = command });
             return Ok(result);
         }
 
         [HttpGet("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginHandler command)
+        public async Task<IActionResult> Login([FromBody] Login command)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new LoginRequest { user = command });
             return Ok(result);
         }
 
         [HttpGet("GetUserById")]
-        public async Task<IActionResult> GetUserById([FromBody] GetUserHandler command)
+        public async Task<IActionResult> GetUserById(Guid Userid)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new GetUserRequest { UserId = Userid });
             return Ok(result);
         }
 
         [HttpGet("GetAllUsers")]
-        public async Task<IActionResult> GetAllUsers([FromBody] GetAllUserHandler command)
+        public async Task<IActionResult> GetAllUsers()
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new GetAllUserRequest());
             return Ok(result);
         }
 
         [HttpDelete("DeleteUser")]
-        public async Task<IActionResult> DeleteUser([FromBody] DeleteUserHandler command)
+        public async Task<IActionResult> DeleteUser(Guid UserId)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new DeleteUserRequest { userId = UserId });
             return Ok(result);
         }
 
         [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserHandler command)
+        public async Task<IActionResult> UpdateUser(Guid UserId, UpdateUserDto userDto)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new UpdateUserRequest { UserId = UserId, UpdateUserDto = userDto });
             return Ok(result);
         }
     }

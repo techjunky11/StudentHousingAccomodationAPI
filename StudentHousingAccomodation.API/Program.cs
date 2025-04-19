@@ -1,8 +1,10 @@
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using StudentHousingAccomodation.Application;
-using StudentHousingAccomodation.Data;
+using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
-using StudentHousingAccomodation.Infrastructure;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,22 +15,64 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.ConfigureApplicationServices();
-
 // Safely retrieve the connection string and handle potential null values
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("The connection string 'DefaultConnection' is not configured.");
 }
-var jwtSection = builder.Configuration.GetSection(nameof(JwtSection)).Get<JwtSection>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlServer(connectionString));
+
+builder.Services.ConfigureApplicationServices();
+
+// Bind JwtSection from configuration
+var jwtSection = builder.Configuration.GetSection("JwtSection").Get<JwtSection>();
 if (jwtSection == null)
 {
-    throw new InvalidOperationException("The JWT section is not configured.");
+    throw new ArgumentNullException(nameof(builder.Configuration), "JwtSection configuration is missing.");
 }
-builder.Services.ConfigureDataService(connectionString); // Ensure the extension method is defined and accessible.
 
-builder.Services.ConfigureInfrastructureServices(builder.Configuration); // Pass the required 'Configuration' argument.
+// Corrected line to fix CS1503
+builder.Services.Configure<JwtSection>(options =>
+{
+    options.Key = jwtSection.Key;
+    options.Issuer = jwtSection.Issuer;
+    options.Audience = jwtSection.Audience;
+});
+
+builder.Services.AddLogging();
+builder.Services.AddMemoryCache();
+
+// Configure JWT authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSection.Issuer,
+        ValidAudience = jwtSection.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection.Key!))
+    };
+});
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()// Replace with your Blazor WASM URL
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
+
+// Pass the required 'Configuration' argument.
 
 var app = builder.Build();
 
@@ -40,7 +84,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowBlazorWasm");
+app.UseCors("AllowAllOrigins");
 app.UseAuthorization();
 app.UseAuthentication();
 

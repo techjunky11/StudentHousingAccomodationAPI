@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
-namespace StudentHousingAccomodation.Infrastructure.Profiles
+namespace StudentHousingAccomodation.Application.Profiles
 {
     public class MappingProfile : Profile
     {
