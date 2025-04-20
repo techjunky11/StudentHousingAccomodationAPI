@@ -26,11 +26,21 @@ namespace StudentHousingAccomodation.Application.Profiles
 
         {
             this.roleRepository = roleRepository;
-            CreateMap<User, CreateNewUserDto>().ReverseMap();
-            CreateMap<CreateNewUserDto, User>().ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => changeRoleNameToRoleId(src.RoleName!)));
 
-            CreateMap<User, GetUserDto>().ReverseMap();
-            CreateMap<User, GetUserDto>().ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => changeRoleIdToRoleName(src.RoleId)));
+            CreateMap<CreateNewUserDto, User>().ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => changeRoleNameToRoleId(src.RoleName!)))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
+
+            CreateMap<User, GetUserDto>().ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => changeRoleIdToRoleName(src.RoleId)))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
+
             CreateMap<User, UpdateUserDto>().ReverseMap();
             CreateMap<PropertyImage, CreateNewPropertyImageDto>().ReverseMap();
             CreateMap<PropertyImage, GetThePropertyImageDto>().ReverseMap();

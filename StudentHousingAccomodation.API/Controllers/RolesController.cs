@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Handlers.Queries;
 using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Command;
 using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Queries;
+using StudentHousingAccomodation.Domain.Records;
 
 namespace StudentHousingAccomodation.API.Controllers
 {
@@ -18,17 +18,15 @@ namespace StudentHousingAccomodation.API.Controllers
         }
 
         [HttpGet("GetAllRoles")]
-        public async Task<IActionResult> GetAllRoles()
+        public async Task<List<string>> GetAllRoles()
         {
-            var result = await mediator.Send(new GetAllRolesNameRequest());
-            return Ok(result);
+            return await mediator.Send(new GetAllRolesNameRequest());
         }
 
         [HttpPost("CreateRole")]
-        public async Task<IActionResult> CreateRole(string Name)
+        public async Task<GeneralResponse> CreateRole(string Name)
         {
-            var result = await mediator.Send(new CreateNewRoleRequest { RoleName = Name });
-            return Ok(result);
+            return await mediator.Send(new CreateNewRoleRequest { RoleName = Name });
         }
     }
 }

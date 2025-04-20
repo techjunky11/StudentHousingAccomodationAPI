@@ -9,7 +9,7 @@ using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
-    internal class PropertyInformationRepository : GenericRepository<PropertyInformation>, IPropertyInformationRepository
+    public class PropertyInformationRepository : GenericRepository<PropertyInformation>, IPropertyInformationRepository
     {
         public PropertyInformationRepository(AppDbContext _db) : base(_db)
         {

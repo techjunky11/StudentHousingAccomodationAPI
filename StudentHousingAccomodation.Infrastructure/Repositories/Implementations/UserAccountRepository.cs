@@ -15,7 +15,6 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
     public class UserAccountRepository : GenericRepository<User>, IUserAccountRepository
     {
-        private readonly IUserAccountRepository userAccountRepository;
         private readonly IUserRolesRepository userRolesRepository;
         private readonly IOptions<JwtSection> config;
         private readonly IRoleRepository roleRepository;
@@ -24,11 +23,11 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 
         private readonly AppDbContext db;
 
-        public UserAccountRepository(IOptions<JwtSection> config, AppDbContext _db, IUserRolesRepository userRolesRepository, IUserAccountRepository userAccountRepository, IRoleRepository roleRepository, ILandLordInformationRepository landLordInformationRepository, IStudentInformationRepository studentInformationRepository) : base(_db)
+        public UserAccountRepository(IOptions<JwtSection> config, AppDbContext _db, IUserRolesRepository userRolesRepository, IRoleRepository roleRepository, ILandLordInformationRepository landLordInformationRepository, IStudentInformationRepository studentInformationRepository) : base(_db)
         {
             this.userRolesRepository = userRolesRepository;
             db = _db;
-            this.userAccountRepository = userAccountRepository;
+
             this.config = config;
             this.roleRepository = roleRepository;
             this.landLordInformationRepository = landLordInformationRepository;
@@ -71,7 +70,7 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             }
 
             //Find the user
-            var checkUser = await userAccountRepository.GetUserByEmail(user.Email!);
+            var checkUser = await GetUserByEmail(user.Email!);
             //user is found
             if (checkUser != null)
             {

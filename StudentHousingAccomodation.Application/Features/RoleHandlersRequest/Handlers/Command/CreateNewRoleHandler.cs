@@ -17,6 +17,8 @@ namespace StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Ha
 
         public async Task<GeneralResponse> Handle(CreateNewRoleRequest request, CancellationToken cancellationToken)
         {
+            var checkRole = roleRepository.GetRoleByName(request.RoleName.ToLower());
+            if (checkRole != null) return new GeneralResponse(false, "Role Already Exists");
             return await roleRepository.Add(new Role
             {
                 Name = request.RoleName

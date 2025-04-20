@@ -1,9 +1,21 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using StudentHousingAccomodation.Application;
+using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Handlers.Command;
+using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Handlers.Queries;
+using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Command;
+using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Queries;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Commands;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Queries;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands;
+using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Queries;
 using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
+using StudentHousingAccomodation.Domain.Records;
+using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
+using StudentHousingAccomodation.Infrastructure.Repositories.Implementations;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,8 +35,6 @@ if (string.IsNullOrEmpty(connectionString))
 }
 builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(connectionString));
-
-builder.Services.ConfigureApplicationServices();
 
 // Bind JwtSection from configuration
 var jwtSection = builder.Configuration.GetSection("JwtSection").Get<JwtSection>();
@@ -63,6 +73,35 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSection.Key!))
     };
 });
+
+///
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(de => de.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+// Register repositories
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddTransient<IUserAccountRepository, UserAccountRepository>();
+builder.Services.AddTransient<IUserRolesRepository, UserRolesRepository>();
+builder.Services.AddTransient<IPropertyImageRepository, PropertyImageRepository>();
+builder.Services.AddTransient<IPropertyInformationRepository, PropertyInformationRepository>();
+builder.Services.AddTransient<IRoomInformationRepository, RoomInformationRepository>();
+builder.Services.AddTransient<ILandLordInformationRepository, LandLordInformationRepository>();
+builder.Services.AddTransient<IPropertyAmentiesInformationRepository, PropertyAmentiesInformationRepository>();
+builder.Services.AddTransient<IPropertyRatingRepository, PropertyRatingRepository>();
+builder.Services.AddTransient<IStudentInformationRepository, StudentInformationRepository>();
+builder.Services.AddTransient<IStudentInterestsRepository, StudentInterestsRepository>();
+
+// Register other services and handlers
+builder.Services.AddTransient<IRequestHandler<GetAllRolesNameRequest, List<string>>, GetAllRolesNameHandler>();
+builder.Services.AddTransient<IRequestHandler<CreateNewRoleRequest, GeneralResponse>, CreateNewRoleHandler>();
+//
+// Register handlers
+builder.Services.AddTransient<IRequestHandler<CreateUserRequest, GeneralResponse>, CreateUserHandler>();
+builder.Services.AddTransient<IRequestHandler<GetAllUserRequest, List<GetUserDto>>, GetAllUserHandler>();
+builder.Services.AddTransient<IRequestHandler<GetUserRequest, GetUserDto>, GetUserHandler>();
+builder.Services.AddTransient<IRequestHandler<UpdateUserRequest, GeneralResponse>, UpdateUserHandler>();
+builder.Services.AddTransient<IRequestHandler<DeleteUserRequest, GeneralResponse>, DeleteUserHandler>();
 
 builder.Services.AddCors(opt =>
 {

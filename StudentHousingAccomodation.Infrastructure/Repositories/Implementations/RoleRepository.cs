@@ -19,14 +19,15 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             db = _db;
         }
 
-        public Task<Role> GetRoleByName(string roleName)
+        public async Task<Role> GetRoleByName(string roleName)
         {
-            throw new NotImplementedException();
+            var role = db.Roles!.FirstOrDefault(x => x.Name!.ToLower() == roleName.ToLower());
+            return role!;
         }
 
         public async Task<List<string>> GetRoleListName()
         {
-            var roleList =  await db.Roles!.Select(x => x.Name).ToListAsync();
+            var roleList = db.Roles!.Select(x => x.Name).ToList();
             return roleList!;
         }
     }
