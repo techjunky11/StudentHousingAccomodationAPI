@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands;
 using StudentHousingAccomodation.Domain.Records;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Commands

@@ -9,39 +9,17 @@ using StudentHousingAccomodation.Domain.Dtos.StudentInformationDtos;
 using StudentHousingAccomodation.Domain.Dtos.StudentInterestsDtos;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
 using StudentHousingAccomodation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Application.Profiles
 {
     public class MappingProfile : Profile
     {
-        private readonly IRoleRepository roleRepository;
-
-        public MappingProfile(IRoleRepository roleRepository)
-
+        public MappingProfile()
         {
-            this.roleRepository = roleRepository;
-
-            CreateMap<CreateNewUserDto, User>().ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => changeRoleNameToRoleId(src.RoleName!)))
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
-                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
-
-            CreateMap<User, GetUserDto>().ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => changeRoleIdToRoleName(src.RoleId)))
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
-                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
-
+            CreateMap<CreateNewUserDto, User>().ReverseMap();
             CreateMap<User, UpdateUserDto>().ReverseMap();
+            CreateMap<User, GetUserDto>().ReverseMap();
             CreateMap<PropertyImage, CreateNewPropertyImageDto>().ReverseMap();
             CreateMap<PropertyImage, GetThePropertyImageDto>().ReverseMap();
             CreateMap<LandLordInformation, CreateNewLandLordInformationDto>().ReverseMap();
@@ -65,18 +43,6 @@ namespace StudentHousingAccomodation.Application.Profiles
             CreateMap<StudentInterests, GetTheStudentInterestsDto>().ReverseMap();
 
             CreateMap<StudentInterests, CreateNewStudentInterestsDto>().ReverseMap();
-        }
-
-        private string changeRoleIdToRoleName(Guid RoleId)
-        {
-            var role = roleRepository.Get(RoleId);
-            return role.Name!;
-        }
-
-        private async Task<Guid> changeRoleNameToRoleId(string RoleName)
-        {
-            var role = await roleRepository.GetRoleByName(RoleName);
-            return role.Id;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Command;
 using StudentHousingAccomodation.Application.Features.RoleHandlersRequest.Requests.Queries;
+using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
 
 namespace StudentHousingAccomodation.API.Controllers
@@ -18,7 +19,7 @@ namespace StudentHousingAccomodation.API.Controllers
         }
 
         [HttpGet("GetAllRoles")]
-        public async Task<List<string>> GetAllRoles()
+        public async Task<IReadOnlyList<Role>> GetAllRoles()
         {
             return await mediator.Send(new GetAllRolesNameRequest());
         }

@@ -3,12 +3,6 @@ using StudentHousingAccomodation.Domain.Dtos.PropertyAmentitiesInformationDtos;
 using StudentHousingAccomodation.Domain.Dtos.PropertyImageDtos;
 using StudentHousingAccomodation.Domain.Dtos.PropertyRatingDtos;
 using StudentHousingAccomodation.Domain.Dtos.RoomInformationDto;
-using StudentHousingAccomodation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Domain.Dtos.PropertyInformationDtos
 {

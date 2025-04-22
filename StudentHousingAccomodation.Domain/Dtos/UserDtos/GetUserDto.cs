@@ -1,6 +1,4 @@
-﻿using StudentHousingAccomodation.Domain.Entities;
-
-namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
+﻿namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
 {
     public class GetUserDto
     {
@@ -14,7 +12,7 @@ namespace StudentHousingAccomodation.Domain.Dtos.UserDtos
         public DateTime DateCreated { get; set; } //e.g. "2023-10-01"
         public DateTime DateModified { get; set; } //e.g. "2023-10-01"
         public bool IsVerified { get; set; } // true or false
-        public string? RoleName { get; set; } // Role of the user (e.g. "Admin", "Student", "Landlord")
+        public Guid RoleId { get; set; } // Foreign key property
         public DateTime? LastLoginDate { get; set; } //e.g. "2023-10-01"
         public DateTime? LastPasswordChangeDate { get; set; } //e.g. "2023-10-01"
     }

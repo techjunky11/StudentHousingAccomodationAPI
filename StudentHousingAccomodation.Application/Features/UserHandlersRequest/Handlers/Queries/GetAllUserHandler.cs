@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Queries;
-using StudentHousingAccomodation.Domain.Dtos.LandLordInformationDtos;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Queries

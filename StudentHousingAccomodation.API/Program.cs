@@ -10,11 +10,14 @@ using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handle
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Queries;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Queries;
+using StudentHousingAccomodation.Application.Profiles;
 using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
+using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 using StudentHousingAccomodation.Infrastructure.Repositories.Implementations;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
@@ -76,7 +79,7 @@ builder.Services.AddAuthentication(options =>
 
 ///
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddMediatR(de => de.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 // Register repositories
@@ -93,7 +96,7 @@ builder.Services.AddTransient<IStudentInformationRepository, StudentInformationR
 builder.Services.AddTransient<IStudentInterestsRepository, StudentInterestsRepository>();
 
 // Register other services and handlers
-builder.Services.AddTransient<IRequestHandler<GetAllRolesNameRequest, List<string>>, GetAllRolesNameHandler>();
+builder.Services.AddTransient<IRequestHandler<GetAllRolesNameRequest, IReadOnlyList<Role>>, GetAllRolesNameHandler>();
 builder.Services.AddTransient<IRequestHandler<CreateNewRoleRequest, GeneralResponse>, CreateNewRoleHandler>();
 //
 // Register handlers
@@ -102,6 +105,7 @@ builder.Services.AddTransient<IRequestHandler<GetAllUserRequest, List<GetUserDto
 builder.Services.AddTransient<IRequestHandler<GetUserRequest, GetUserDto>, GetUserHandler>();
 builder.Services.AddTransient<IRequestHandler<UpdateUserRequest, GeneralResponse>, UpdateUserHandler>();
 builder.Services.AddTransient<IRequestHandler<DeleteUserRequest, GeneralResponse>, DeleteUserHandler>();
+builder.Services.AddTransient<IRequestHandler<LoginRequest, LoginResponse>, LoginHandler>();
 
 builder.Services.AddCors(opt =>
 {

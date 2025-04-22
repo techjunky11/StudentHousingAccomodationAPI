@@ -5,11 +5,11 @@ using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
 using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
+using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
@@ -76,6 +76,13 @@ namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
             {
                 return new GeneralResponse(false, "User registered already");
             }
+
+            var checkRole = roleRepository.Get(user.RoleId);
+            if (checkRole == null)
+            {
+                return new GeneralResponse(false, "Role not found");
+            }
+
             var appUser = await AddToDatabase(new User()
             {
                 //add Register models to map to the ApplicationUser model

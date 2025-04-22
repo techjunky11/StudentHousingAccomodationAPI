@@ -1,6 +1,4 @@
-﻿using StudentHousingAccomodation.Domain.Entities;
-
-namespace StudentHousingAccomodation.Domain.Dtos.LandLordInformationDtos
+﻿namespace StudentHousingAccomodation.Domain.Dtos.LandLordInformationDtos
 {
     public class CreateNewLandLordInformationDto
     {

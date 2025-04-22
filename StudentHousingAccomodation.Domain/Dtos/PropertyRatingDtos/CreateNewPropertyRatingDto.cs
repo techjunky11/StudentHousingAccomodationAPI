@@ -1,11 +1,4 @@
-﻿using StudentHousingAccomodation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudentHousingAccomodation.Domain.Dtos.PropertyRatingDtos
+﻿namespace StudentHousingAccomodation.Domain.Dtos.PropertyRatingDtos
 {
     public class CreateNewPropertyRatingDto
     {

@@ -1,11 +1,6 @@
 ﻿using StudentHousingAccomodation.Domain.Dtos.UserDtos;
 using StudentHousingAccomodation.Domain.Entities;
 using StudentHousingAccomodation.Domain.Records;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Contracts
 {

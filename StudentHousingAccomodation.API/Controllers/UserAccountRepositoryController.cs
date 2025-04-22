@@ -1,9 +1,5 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Commands;
-using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Handlers.Queries;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Commands;
 using StudentHousingAccomodation.Application.Features.UserHandlersRequest.Requests.Queries;
 using StudentHousingAccomodation.Domain.Dtos.UserDtos;
@@ -28,8 +24,8 @@ namespace StudentHousingAccomodation.API.Controllers
             return await mediator.Send(new CreateUserRequest { CreateNewUserDto = command });
         }
 
-        [HttpGet("Login")]
-        public async Task<LoginResponse> Login([FromBody] Login command)
+        [HttpPost("Login")]
+        public async Task<LoginResponse> Login(Login command)
         {
             return await mediator.Send(new LoginRequest { user = command });
         }

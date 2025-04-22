@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudentHousingAccomodation.Domain.Entities
+﻿namespace StudentHousingAccomodation.Domain.Entities
 {
     public class StudentInformation
     {
@@ -23,6 +17,5 @@ namespace StudentHousingAccomodation.Domain.Entities
         public List<PropertyInformation>? PropertyInformation { get; set; } // List of properties the student is interested in
         public List<RoomInformation>? RoomInformation { get; set; } // List of rooms the student is interested in
         public List<PropertyRating>? PropertyRatings { get; set; }
-        
     }
 }

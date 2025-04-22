@@ -1,6 +1,4 @@
-﻿using StudentHousingAccomodation.Domain.Dtos.PropertyInformationDtos;
-
-namespace StudentHousingAccomodation.Domain.Dtos.PropertyImageDtos
+﻿namespace StudentHousingAccomodation.Domain.Dtos.PropertyImageDtos
 {
     public class GetThePropertyImageDto
     {

@@ -1,23 +1,25 @@
-﻿using StudentHousingAccomodation.Data.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentHousingAccomodation.Data.Data;
 using StudentHousingAccomodation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StudentHousingAccomodation.Infrastructure.Repositories.Contracts;
 
 namespace StudentHousingAccomodation.Infrastructure.Repositories.Implementations
 {
     public class UserRolesRepository : GenericRepository<UserRoles>, IUserRolesRepository
     {
+        private readonly AppDbContext db;
+
         public UserRolesRepository(AppDbContext _db) : base(_db)
         {
+            db = _db;
         }
 
-        public Task<UserRoles> GetUserRoleByUserIdAsync(Guid Userid)
+        public async Task<UserRoles> GetUserRoleByUserIdAsync(Guid Userid)
         {
-            throw new NotImplementedException();
+            var userRole = await db.UserRoles
+                .Where(x => x.userId == Userid)
+                .FirstOrDefaultAsync();
+            return userRole!;
         }
     }
 }
